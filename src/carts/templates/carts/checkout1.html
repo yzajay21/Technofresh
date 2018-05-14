@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+ <script type="text/javascript">
+    var hash = "{{ hashh }}";
+    function submitPayuForm() {
+      if(hash =='') {
+        return;
+      }
+      var payuForm = document.forms.payuForm;
+      payuForm.submit();
+    }
+  </script>
+
+{% if not billing_profile %}
+	<div class="row text-center">
+		<div class='col-12 col-md-6'>
+			<p class='lead'>Login</p>
+			{% include 'accounts/snippets/form.html' with form=login_form next_url=request.build_absolute_uri %}
+		</div>
+		<div class='col-12  col-md-6'>
+			Continue as Guest
+
+			{% url "guest_register" as guest_regsiter_url %}
+			{% include 'accounts/snippets/form.html' with form=guest_form next_url=request.build_absolute_uri action_url=guest_regsiter_url %}
+		</div>
+	</div>
+
+{% else %}
+
+		{% if not object.shipping_address  %}
+		<div class ='row'>
+			<div class="col-12">
+				<p class='lead'>Shipping Address</p>
+				<hr/>
+			</div>
+			<div class='col-6'>
+				
+			
+
+				{% url "checkout_address_create" as checkout_address_create %}
+				{% include 'addresses/form.html' with form=address_form next_url=request.build_absolute_uri action_url=checkout_address_create address_type='shipping' %}
+			</div>
+			
+				
+			
+		</div>
+		{% elif not object.billing_address %}
+		 <div class ='row'>
+			<div class='col-12'>
+				<p class='lead'>Billing Address</p>
+				<hr/>
+				{% url "checkout_address_create" as checkout_address_create %}
+				{% include 'addresses/form.html' with form=address_form next_url=request.build_absolute_uri action_url=checkout_address_create address_type='billing' %}
+				>
+			</div>
+
+		</div>
+		{% else %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 sm-6">
+                   <form action="https://test.payu.in/_payment"  name="payuForm" method="post">    
+                    {% csrf_token %}        
+                    <input type="hidden" name="key" value="{{ key }}" />            
+                    <input type="hidden" name="hash" value="{{ hash_ }}"/>            
+                    <input type="hidden" name="txnid" value="{{ txnid }}" />
+                    <input type="hidden" name="amount" value="{{ amount }}" />
+                    <input type="hidden" name="email" value="{{ User }}" />
+                    <input type="hidden" name="firstname" value="{{ Name }}" />
+                    <input type="hidden" name="phone" value="{{ Mobile }}" />
+                    <input type="hidden" name="productinfo" value="{{product}}"/>
+                    <input type="hidden" name="hash_string" value="{{ hash_ }}" />
+                    <input type="hidden" name="surl" value="{{surl}}"/>
+                    <input type="hidden" name="furl" value="{{ furl }}" />
+                    <input type="hidden" name="service_provider" value="{{ service_provider }}" />
+                    
+                    <div class="form-inline">
+                        <div class="col-md-12 col-sm-12">
+                            Amount : {{amount}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12">
+                            Products :{{product}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12">
+                            Name : {{Name}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12">
+                            Email : {{User}}
+                        </div>
+                    </div>            
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12">
+                            Mobile : {{billing_profile.mobile_no}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12">
+                            Transaction ID : {{txnid}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12" style="padding-bottom:20px;padding-top:20px;">
+                            After clicking 'Pay Now' button, you will be redirected to PayUMoney Secure Gateway.
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-12">
+                            <input type="submit" class="btn btn-success btn-lg" value="Pay Now">
+                        </div>
+                    </div>
+                    </form>
+                    
+                    <p>Choose Your Payment At Your Doorstep</p>
+                    <h2 class='text-center ' >OR</h2>
+                    <form class='form col-md-6' method="POST" action="">{% csrf_token %}
+                        <input type="submit" class="btn btn-success btn-md" value="Cash On Deleivery"></input>
+                    </form>
+                    <a href="https://test.instamojo.com/@ajaymundhe21/" rel="im-checkout" data-behaviour="remote" data-style="light" data-text="Checkout With Instamojo"></a>
+            <script src="https://js.instamojo.com/v1/button.js"></script>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+{% endif %}
+
+
+
+{% endblock %}
+
+    

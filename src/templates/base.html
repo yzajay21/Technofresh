@@ -1,0 +1,59 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>{% block title %}Technofresh{% endblock %}</title>
+    <meta name="description" content="Buy online farm fresh fruits and vegetables online, sourced directly from farmers to your doorstep with no delivery charges in Pune. Explore Technofresh farm fresh baskets. Also buy organic vegetables online. 
+    We provide Sorted, Graded Vegetables which are Residue free & Healthy.">
+    {% include 'base/css1.html' %}
+    
+    
+</head>
+<body>
+    {% include "navbar22.html" %}
+    <div class='container'>
+        {% if messages %}
+      <div class="alert alert-success messages">
+          {% for message in messages %}
+          <span{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+              {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+              {{ message }}<br/>
+          </span>
+          {% endfor %}
+      </div>
+      {% endif %}
+      
+    </div>
+    <div class="container-fluid">
+        {% block jumbotron %}{% endblock %}
+    </div>
+    <div class="container-fluid">
+        {% block categories %} {% endblock %}
+    </div>
+    <div class="container-fluid">
+       
+       {% block content %} {% endblock %}
+       
+    </div>
+    <div class="container">
+        {% block offers %}{% endblock %}
+    </div>
+    {% block container %} {% endblock %}
+
+    <div class="container-fluid">
+
+     {% block features %} {% endblock %}
+    </div>
+    {% block mobile %}{% endblock %}
+    <hr/>
+    {% block map %}{% endblock %}
+    {% include 'base/my_js.html' %}
+    {% include 'footer.html' %}
+    {% block javascript %}{% endblock %}
+</body>
+</html>

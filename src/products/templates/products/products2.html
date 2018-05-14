@@ -1,0 +1,25 @@
+{% load staticfiles %}
+<div class="owl-carousel owl-theme">
+    {% for instance in object_list %}
+		<div class="col-md-4">
+			<div class="card-deck">
+				<div class="card">
+					<div class="card-img-top card-img-top-250">
+						{% if instance.get_image_url %}
+		          			<a href="{{ instance.get_absolute_url }}"><img class="img-fluid" src="{{ instance.get_image_url }}" alt="{{ instance.title}} logo"></a>
+		        		{% endif %}
+					</div>
+					<div class="card-block pt-2">
+						<div class="card-header"><h3>{{ instance.title }}</h3></div>
+						<div class="card-text">{{ instance.description|linebreaks|truncatewords:14 }}</div>
+						<p class="card-text">₹{{ instance.price }}</p>
+					</div>
+					<div class='text-center'>
+		              			<a href="{{ instance.get_absolute_url }}" class="btn btn-primary my-2">View</a>
+		              				{% include 'products/snippets/update_cart.html' with product=instance cart=cart %}
+		          	</div>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>

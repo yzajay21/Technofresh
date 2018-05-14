@@ -1,0 +1,42 @@
+
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+
+<div id="header">
+	<div id ="subheader">
+	    <div class="container">
+	    	<p>world best online shop</p>
+	    		<a href="#">Download App</a><a href="#">Download App</a><a href="#">Download App</a>
+	    </div>
+	</div>
+			<!--main header-->
+	<div id="main-header">
+		<div id="logo">
+    		<span id="ist">Technofresh</span>
+    	</div>
+    			<!-- search area-->
+    	<div id="search">
+    		<form method='GET' action = ''>
+				<input class="search-area" type="search" placeholder="Search Your Product" name ='q' aria-label="Search" value ='{{ request.GET.q }}'>
+				<input class="search-btn" type="submit"></input>
+			</form>
+    	</div>
+    			<!-- user menu-->
+    	<div id="user-menu">
+    		<li><a href="#">Cart</a></li>
+    		<li><a href="#">Login</a></li>
+    	</div>
+	</div>
+</div>
+	    <!--Navigation-->
+	<div id="navigation">
+	   	<nav>
+	    		<a href="#">Home</a>
+    			<a href="#">Categories</a>
+    			<a href="{% url 'products' %}">Products</a>
+    			<a href="#">Home</a>
+    			<a href="#">Home</a>
+	    	</nav>
+	    </div>
+{% endblock %}

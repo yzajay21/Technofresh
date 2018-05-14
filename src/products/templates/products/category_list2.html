@@ -1,0 +1,56 @@
+{% extends "base1.html" %}
+{% load staticfiles %}
+{% block content %}
+<!-- Place somewhere in the <body> of your page -->
+<div class="container">
+	<h3 class="text-center">Categories</h3>
+	<div class="owl-carousel owl-theme">
+		{% for obj in object_list %}
+		<div class="item">
+			<div class='col my-3'>
+		    	<div class="card" style="width: 20rem;">
+					<div class="card-body">
+						<h4 class="card-title">{{ obj.title }}</h4>
+						<div class='text-center'>
+							<a href="{{ obj.get_absolute_url }}" class="btn btn-primary my-2">View</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}
+
+
+<h3 class="mb-5 text-center">Featured Products</h3><hr/>
+<div class='container mt-5'>
+	<div class="card-deck">
+		{% for product in items %}
+			<div class="card cardColor">
+				<div class="card-body">
+					{% if product.get_image_url %}
+						<a href="{{ product.get_absolute_url }}"><img class="img-fluid" src="{{ product.get_image_url }}" alt="{{ product.title}} logo"></a><hr/>
+					{% endif %}
+				
+					<h3 class="card-title mt-2">{{ product.title }}</h3><hr/>
+					<p class="card-text1 descriptionColor">{{ product.description|truncatewords:14 }}</p>
+					<p class="card-text">₹{{ product.price }}</p>
+				
+					<div class='text-center'>
+						<a href="{{ product.get_absolute_url }}" class="btn btn-primary my-2 float-	center">View</a>
+						    {% include 'products/snippets/update_cart.html' with product=product cart=cart %}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		{% include "pagination.html" %}
+	</div>
+</div>

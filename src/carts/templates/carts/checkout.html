@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% if not billing_profile %}
+	<div class="row text-center">
+		<div class='col-12 col-md-6'>
+			<p class='lead'>Login</p>
+			{% include 'accounts/snippets/form.html' with form=login_form next_url=request.build_absolute_uri %}
+		</div>
+		<div class='col-12  col-md-6'>
+			Continue as Guest
+
+			{% url "guest_register" as guest_regsiter_url %}
+			{% include 'accounts/snippets/form.html' with form=guest_form next_url=request.build_absolute_uri action_url=guest_regsiter_url %}
+		</div>
+	</div>
+
+{% else %}
+
+		{% if not object.shipping_address  %}
+		<div class ='row'>
+			<div class="col-12">
+				<p class='lead'>Shipping Address</p>
+				<hr/>
+			</div>
+			<div class="container">
+				<div class='col-12 md-16 sm-6 lg-12'>
+					
+				
+
+					{% url "checkout_address_create" as checkout_address_create %}
+					{% include 'addresses/form.html' with form=address_form next_url=request.build_absolute_uri action_url=checkout_address_create address_type='shipping' %}
+				</div>
+			</div>
+			
+				
+			
+		</div>
+		{% elif not object.billing_address %}
+		 <div class ='row'>
+			<div class='col-12'>
+				<p class='lead'>Billing Address</p>
+				<hr/>
+				{% url "checkout_address_create" as checkout_address_create %}
+				{% include 'addresses/form.html' with form=address_form next_url=request.build_absolute_uri action_url=checkout_address_create address_type='billing' %}
+				>
+			</div>
+				
+
+		</div>
+		{% else %}
+		<div class="card" style="width: 135rem;">
+			<div class="card-body">
+				<h1 class="card-title ml-7">Finalize CheckOut</h1>
+				<h6 class="card-subtitle mb-2">Cart Items : {% for product in object.cart.products.all %}{{product}}{% if not forloop.last %}, {% endif %}{% endfor %} </h6>
+				<p>Shipping Address : {{ object.shipping_address.get_address|title }}</p>
+				<p>Billing Address : {{ object.billing_address.get_address|title }}</p>
+
+				<p>Cart Total : {{ object.cart.total }} </p>
+				{% if object.cart.total < 200 %}
+					<p> Shipping Total: {{ object.shipping_total }}</p>
+				{% else %}
+					<p> Shipping Total: {{ 0 }}</p>
+				{% endif %}
+				<p>Order Total: {{ object.total }}</p>	
+			</div>
+		</div>
+			
+	
+	<div class="container mt-4">
+		<h1 class="text-center mt-6">Choose Your Payment Options</h1>
+		<div class="card-deck">
+			<div class="card" style="width: 18rem;">
+				<div class="card-body">
+			    <p class="card-text display1" style="margin: 40px; font-size: 1.5em;">At your click, we deliver freshness.</p>
+			    <form class='form' method="POST" action="">{% csrf_token %}
+					<button type="submit" class="btn btn-lg btn-success" style="margin-top: 10px; margin-left: 80px;">Cash on delivery</button>
+			  	</div>
+			</div>
+			<div class="card" style="width: 18rem;">
+			  <div class="card-body">
+			     <p class="card-text display1" style="margin: 40px; font-size: 1.5em;">At your click, we deliver freshness.</p>
+			    <div class="checkout">
+			    	<a href="https://test.instamojo.com/@ajaymundhe21/" rel="im-checkout" data-behaviour="remote" data-style="flat" data-text="Checkout With Instamojo"></a>
+					<script src="https://js.instamojo.com/v1/button.js"></script>
+				</div>
+			  </div>
+			</div>
+			<div class="card" style="width: 18rem;">
+			  <div class="card-body">
+			     <p class="card-text display1" style="margin: 40px; font-size: 1.5em;">At your click, we deliver freshness.</p>
+			   	 <button type="button" class="btn btn-lg btn-success" disabled style="margin-top: 10px; margin-left: 80px;">Payumoney</button>
+			  </div>
+			</div>
+		</div>
+	</div>
+		{% endif %}
+{% endif %}
+
+
+{% endblock %}

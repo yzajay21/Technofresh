@@ -1,0 +1,53 @@
+{% load staticfiles %}
+{% url 'home' as home_url %}
+{% url 'cart:home' as cart_url %}
+{% url 'login' as login_url %}
+{% url 'logout' as logout_url %}
+{% url 'register' as register_url %}
+{% url 'account:home' as account_url %}
+{% url 'products:list' as product_list_url %}
+    <div id= "wrapper">
+    	<div id="header">
+	    	<div id ="subheader">
+	    <div class="container">
+	    	<p>world best online shop</p>
+	    		<a href="#">Download App</a><a href="#">Download App</a><a href="#">Download App</a>
+	    </div>
+			</div>
+			<!--main header-->
+			<div id="main-header">
+				<!-- logo-->
+				<div id="logo">
+    				<img src="{% static 'images/FINAL1.png' %}" alt="logo">
+    			</div>
+    			<!-- search area-->
+    			<div id="search">
+    				<form method='GET' action = '{% url "search:query" %}' class="search-form">
+    					<input class="search-area"" type="search" placeholder="Search all your Products..." name ='q' value ='{{ request.GET.q }}'>
+    					<button class="search-btn" type="submit" name="Submit">Search</button>
+    					
+    				</form>
+    			</div>
+    			<!-- user menu-->
+    			<div id="user-menu">
+    				<li class="nav-item {% if request.path == cart_url %}active{% endif %}">
+        				<a class="nav-link" href="{{ cart_url }}"><span class='navbar-cart-count'>{{ request.session.cart_items }}</span> <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+     				 </li>
+    				<li><a href="#">Login</a></li>
+    			</div>
+			</div>
+	    </div>
+	    <!--Navigation-->
+	    <div id="navigation">
+	    	<nav>
+	    		<a href="{{ home_url }}">Home</a>
+    			<a href="{% url 'categories' %}">Categories</a>
+    			<a href="{{ product_list_url }}">Products</a>
+    			<a href="#">Home</a>
+    			<a href="#">Home</a>
+	    	</nav>
+	    </div>
+	</div>
+
+	
+        

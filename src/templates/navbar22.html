@@ -1,0 +1,54 @@
+{% url 'home_page' as home_url %}
+{% url 'cart:home' as cart_url %}
+{% url 'login' as login_url %}
+{% url 'logout' as logout_url %}
+{% url 'register' as register_url %}
+{% url 'account:home' as account_url %}
+{% load staticfiles %}
+<div class="col-md-12 sm-12" id ="subheader">
+    <a href="{% url 'register' %}">Sign Up</a><a href="#"><i class="fas fa-phone-volume"></i>+ 91-88888058062</a>
+</div>
+<nav class="navbar navbar-expand-md navbar-dark navbarResponsive navbar sticky-top">
+  <a class="col-md-2 sm-12 navbar-brand logo" href="{% url 'home' %}"><img src="{% static 'images/final.png' %}"></a>
+
+  <div class="container-fluid  mynav" style="background: #00ADEF;">
+    
+    <div class="col-md-8 " id="search">
+      <form method='GET' action = '{% url "search:query" %}' class="form-inline my-2 my-lg-0 search-form  mt-auto w-100px">
+        <input class="search-area" type="search" placeholder="Search all your Products..." name ='q' value ='{{ request.GET.q }}' style="width: 650px; height:40px;border-radius: 10px;padding-left: 15px; ">
+        <button class="col-md-2 sm-5 xs-4 search-btn" type="submit">Search</button>
+      </form>
+    </div>  
+    <button class="navbar-toggler" type="button" data-toogle="collapse" data-target="#navbarResponisve"><span class="navbar-toggler-icon"></span></button>
+    <div id ="user-menu">
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            
+            <li class="nav-item">
+               <a class="nav-link" href="{{ cart_url }}"><span class='navbar-cart-count'>{{ request.session.cart_items }} </span>
+                
+                 <i class="fas fa-shopping-basket"></i></i></a>
+                
+            </li>
+            {% if request.user.is_authenticated %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+                <div class="dropdown-menu" style="background: #00ADEF" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item {% if request.path == account_url %}active{% endif %}" href="{{ account_url }}">Home</a>
+                  <a class="dropdown-item" href="{{ account_url }}#billing">Billing</a>
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ logout_url }}">Logout</a>
+                </div>
+               </li>
+            {% else %}
+              <li class="nav-item {% if request.path == login_url %} active {% endif %}">
+                <a class="nav-link" href="{{ login_url }}">Login</a>
+              </li>
+            {% endif %}
+          </ul>   
+        </div>
+    </div>
+  </div>
+</nav>
+<hr/>
+

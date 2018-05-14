@@ -1,0 +1,258 @@
+{% extends "base.html" %}
+{% load staticfiles  %}
+
+{% block jumbotron %}
+	<div class="container-fluid">
+		<div class="bxslider">
+			{% for photo in photos %}
+				<div class="item">
+					{% if photo.image %}
+					<img src='{{ photo.image.url }}' class="img-responsive"/>
+					
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %} 	
+
+{% block categories %}
+<!-- Place somewhere in the <body> of your page -->
+<style>
+
+	@import url('https://fonts.googleapis.com/css?family=Alegreya:700');
+	@import url('https://fonts.googleapis.com/css?family=Oswald');
+	h1,h3{
+		font-family: 'Oswald', sans-serif;
+	}
+	h4 {
+		font-family: 'Alegreya', serif;
+	}
+	h4 {
+		color:#EE4624; 
+}
+	.link a:hover {
+    color:#EE4624;
+	}
+</style>
+<hr/>
+<h3 class="text-center">Categories</h3>
+<div class="container">
+	<div class="card-deck">
+		<div class="owl-carousel owl-theme">
+			{% for obj in categories %}
+			<div class="item">
+				<div class='col my-3'>
+			    	<div class="card" style="width: 20rem;">
+						<div class="card-body">
+							<div class="link">
+								<a href="{{ obj.get_absolute_url }}"><h4 class="card-title">{{ obj.title }}</h4></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+<hr/>
+{% endblock %}
+
+
+{% block content %}
+<style>
+	
+	@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+	 .bold {
+		font-family: 'Playfair Display', serif;
+	}
+</style>
+<h3 class="text-center">Everday Vegetables thats make your life healthire</h3><hr/>
+<div class='container'>
+		<div class="row">
+		{% for object in products %}
+		<div class="col-md-3"><hr/>
+			<div class="card-deck">
+				<div class="card cardColor">
+						<div class="card-body">
+							{% if object.get_image_url %}
+								<a href="{{ object.get_absolute_url }}"><img class="img-fluid" src="{{ object.get_image_url }}" alt="{{ object.title}}"></a><hr/>
+							{% endif %}
+							<h3 class="card-title mt-2">{{ object.title }}</h3><hr/>
+							<p class="card-text1 descriptionColor">{{ object.description|truncatewords:14 }}<hr/></p>
+							<p class="card-text text-center">₹{{ object.price }}</p>
+							
+							<div class='text-center'>
+								<a href="{{ object.get_absolute_url }}" class="btn btn-primary my-2 float-	center">View</a>
+								{% include 'products/snippets/update_cart.html' with product=object cart=cart %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			</div>
+		</div>
+<hr/>	
+{% endblock %}
+
+{% block container %}
+	<div class='container-fluid mt-5'>
+		<h3 class="mb-5 text-center">Featured Products</h3><hr/>	
+		<div class="card-deck">
+			<div class="owl-carousel owl-theme">
+				{% for product in products2 %}
+					<div class="item">
+						<div class="card cardColor">
+							<div class="card-body">
+								{% if product.get_image_url %}
+									<a href="{{ product.get_absolute_url }}"><img class="img-fluid" src="{{ product.get_image_url }}" alt="{{ product.title}} logo"></a><hr/>
+								{% endif %}
+							
+								<h3 class="card-title mt-2">{{ product.title }}</h3><hr/>
+								<p class="card-text1 descriptionColor">{{ product.description|truncatewords:14 }}</p>
+								<p class="card-text text-center">₹{{ product.price }}</p>
+							
+								<div class='text-center'>
+									<a href="{{ product.get_absolute_url }}" class="btn btn-primary my-2 float-	center">View</a>
+									    {% include 'products/snippets/update_cart.html' with product=product cart=cart %}
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div><hr/>
+{% endblock %}
+{% block mobile %}
+	<style>
+		.heading {
+			margin-right: 100px;
+			text-align: right;
+		}
+		.android-ios {
+			width:130px;
+			height: 50px;
+			margin-left: 800px;
+			margin-right:100px;
+		}
+		.android {
+			width:150px;
+			height: 70px;
+			margin-left: 970px;
+			margin-top: -70px;
+		}
+	</style>
+	<div class="container-fluid">
+		<div class="row">
+			<img src="{% static 'images/mobile-app.png' %}" class="img-fluid" style="margin-left: 170px;">
+		</div>
+	
+		<div class="row">
+			<div class="col-md-10 col-sm-7">
+				<div class="fh5co-owl-text-wrap">
+					<div class="fh5co-owl-text">
+						<h1 class="fh5co-lead text-right" style="margin-top:-350px;margin-left:400px;">Also Avilable On Mobile</h1>
+					
+							<img src="{% static 'images/android-download.png' %}" class="android-ios img-fluid" style="">
+							<img src="{% static 'images/ios-download.svg' %}" class="android img-fluid" style="">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+{% endblock %}
+{% block features %}
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Oleo+Script');
+	@import url('https://fonts.googleapis.com/css?family=Cabin');
+	.Features {
+		font-family: 'Oleo Script', cursive;
+	}
+	.feat-desc {
+		font-family: 'Cabin', sans-serif;
+	}
+</style>
+	 <div class="container-fluid marketing bg-light mt-auto">
+		<div class="row">
+ 			<div class="col-sm-12">
+ 				<h3 class="text-center Features" style="margin-bottom: 50px;margin-top: 20px;">We Are Technofresh</h3>
+ 				
+ 			</div>
+ 		</div>
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+          <div class="col-lg-4">
+            <i class="fas fa-hand-holding-heart fa-4x" style="margin-left: 170px;margin-bottom: 20px;color:Tomato"></i>
+            <h2 class="text-center Features">Our Vision</h2>
+            <p class="feat-desc"> To provide Residue Free , Fram Fresh  & Soreted Fruits , Vegetables and other Agro Foods to our customer.
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            	<i class="fab fa-angellist fa-4x" style="margin-left: 170px; margin-bottom: 20px;color: red"></i>
+            <h2 class="text-center Features">Our Mission</h2>
+            <p class="feat-desc">To encourage Farmers for Residue free farming to produce Safe consumables Fruits and Vegetables.</p>
+            
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <i class="fab fa-slideshare fa-4x" style="margin-left:160px;margin-bottom: 20px;color:#00A8EE"></i>
+            <h2 class="text-center Features">Our Philosophy</h2>
+            <p class="feat-desc">Our first preference is to provide our customer Safe, Residue Free and Sorted agro products at very reasonable price.</p>
+            
+          </div><!-- /.col-lg-4 -->
+        </div><hr/>
+{% endblock %}
+{% block map %}
+	<style type="text/css" media="screen">
+		.imges {
+			margin-left: 60px;
+		 margin-right: 0;
+		}
+	</style>
+	<div class="container-fluid">
+		<div class="imges">
+			<img src="{% static 'images/3.png' %}" class="img-fluid">
+		</div>
+	</div>
+{% endblock %}
+
+{% block offers %}
+
+	<style type="text/css">
+		.images
+			{
+			display: inline;
+			margin: 0px;
+			padding: 0px;
+			}
+
+		.imgContainer
+		{
+		display: block;
+		margin-top:5px;
+		padding: 0px;
+		position: relative;
+		/*top: 90px;*/
+		height: auto;
+		max-width: auto;
+		overflow-y: hidden;
+		overflow-x:auto;
+		}
+	</style>
+
+	<h3 class="text-center">What Offers We Have</h3>
+	<div class="cotianer-fluid">
+		<div class="row">
+			<div class="imgContainer ">
+			{% for photo in offers %}
+				{% if photo.image %}
+				<img class="image" src='{{ photo.image.url }}' class="img-rounded" style="margin-left:40px"/>
+				{% endif %}
+			{% endfor %}
+			</div>
+		</div><hr/>
+	</div>
+{% endblock %}

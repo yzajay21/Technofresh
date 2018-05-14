@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+	<div class='row'>
+
+	    {% for obj in object_list %}
+	        <div class='col my-3'>
+			<div class="card" style="width: 20rem;">
+				  {% if obj.get_image_url %}
+				    <a href="{{ instance.get_absolute_url }}"><img class="card-img-top" src="{{ instance.get_image_url }}" alt="{{ instance.title}} logo"></a>
+				    {% endif %}
+				  <div class="card-body">
+				    <h4 class="card-title">{{ obj.title }}</h4>
+				    
+				    
+				   	<div class='text-center'>
+				        <a href="{{ obj.get_absolute_url }}" class="btn btn-primary my-2">View</a>
+				      
+				    </div>
+				  </div>
+				</div>
+	        </div>
+	    {% endfor %}
+	</div>
+{% endblock %}

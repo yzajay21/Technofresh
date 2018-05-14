@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<style>
+	
+	@import url('https://fonts.googleapis.com/css?family=Economica');
+	@import url('https://fonts.googleapis.com/css?family=Oleo+Script');
+	.heading  {
+		font-family: 'Oleo Script', cursive;
+
+	}
+	.heading1{font-family: 'Oleo Script', cursive;
+}
+	.About-page p{
+		font-family: 'Economica', sans-serif;
+		font-size: 1.5em;
+	}
+</style>
+<h1 class="text-center About">ABOUT US</h1><hr/>
+
+	<div class="container About-page">
+		<div class="row">
+			<div class="col-md-6">
+				<h1 class="heading">We Are Technofresh</h1><hr>
+				<h2 class="heading1">Our Vision</h2>
+					<p>Our first preference is to provide our customer Safe, Residue Free and Sorted agro products at very reasonable price.</p><hr>
+					<h2 class="heading1">Our Mission</h2>
+					<p>Generally in market customer did not get Farm Fresh Fruits and Vegetables due to long distribution channel.<br>We are direct link between farmer and customer , we sort the products in our State of Art Facility situated in Pune.</p> <hr/>
+					<h2 class="heading1">Our Philosophy</h2>
+					<p>There are many players in this segment who are claiming Agro producers but they are just Courier company who purchase packed agro  products from market and courier to your doorstep.<br>
+					We at Technofresh guarantee you the fresh and sorted products without residue.</p>
+			</div>
+			<div class="col-md-6 mt-9">
+				<img src="{% static 'images/technofresh.png' %}" class="img-fluid rounded max-width: 100% height:auto" style="margin-top: 100px;" >
+			</div>
+	</div><hr/>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<h2 class="heading1">Residue Free</h2><hr/>
+				<p>Generally during farming Farmers use Insecticide and other metallic ingredient to protect crop from environmental hazard, <br>during harvesting they harvest the product and take it to market for sale. The particle of insecticide, pesticide and other metallic material is called as Residue.</p>
+
+				<p>These Residue are consumed by us and then after long period it causes illness and other complications to our body.</p>
+
+
+				<p>From market it comes to your retailer where the Fruits and Vegetables face Co2 and Carbon monoxide emmision from Two and Four wheeler smoke.</p>
+
+				<p>We at Technofresh thoroughly clean the Vegetables with Nano Wash to remove the residues and other small infestation from the Agro products.</p>
+			</div>
+			<div class="col-md-6 mt-9">
+				<img src="{% static 'images/tech3.png' %}" class="img-fluid rounded max-width: 100% height:auto" style="margin-top: 40px;" >
+			</div>
+		</div>
+	</div>
+	
+	
+{% endblock %}

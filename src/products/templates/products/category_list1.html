@@ -1,0 +1,22 @@
+{% extends "base1.html" %}
+{% load staticfiles %}
+{% block content %}
+<!-- Place somewhere in the <body> of your page -->
+<div class="container">
+	<h3 class="text-center">Categories</h3>
+	<div class="owl-carousel owl-theme">
+		{% for obj in object_list %}
+		<div class="item">
+			<div class='col my-3 p'>
+		    	<div class="card" style="width: 20rem;">
+					<div class="card-body">
+						<a href="{{ obj.get_absolute_url }}"><h4 class="card-title">{{ obj.title }}</h4></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}

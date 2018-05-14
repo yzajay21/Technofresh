@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<div class="subheader">
+    <div class="container-fluid">
+        <a href="#">Download App</a><a href="{{ register_url }}">Register</a>
+    </div>
+</div>
+<nav class=" mynavbar navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home
+            ' %}"><img src="{% static 'images/FINAL1.png' %}"></a>
+        <div id="search">
+            <form method='GET' action = '{% url "search:query" %}' class="form-inline my-2 my-lg-0 search-form">
+                <input class="search-area"" type="search" placeholder="Search all your Products..." name ='q' value ='{{ request.GET.q }}'>
+                <button class="search-btn" type="submit">Search</button>
+            </form>
+        </div>  
+        <button class="navbar-toggler" type="button" data-toogle="collapse" data-target="#navbarResponisve"><span class="navbar-toggler-icon"></span></button>
+        <div id ="user-menu">
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="{{ cart_url }}"><span class='navbar-cart-count'>{{ request.session.cart_items }} </span>
+                        <i class="fas fa-shopping-cart"></i>  </a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Account
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item {% if request.path == account_url %}active{% endif %}" href="{{ account_url }}">Home</a>
+                                <a class="dropdown-item" href="{{ account_url }}#billing">Billing</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ logout_url }}">Logout</a>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li class="nav-item {% if request.path == login_url %} active {% endif %}">
+                            <a class="nav-link" href="{{ login_url }}">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>   
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <h1>Hello</h1>
+</div>

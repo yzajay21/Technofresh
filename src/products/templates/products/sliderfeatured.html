@@ -1,0 +1,89 @@
+
+{% block featured %}
+	<div class='row'>
+		    
+		   	<div class="container mt-3">
+					<div class="row">
+				<div class="owl-carousel owl-theme">
+					{% for instance in object_list %}
+			        	<div class="item">
+				      		<div class="card">
+				        		{% if instance.get_image_url %}
+				          			<a href="{{ instance.get_absolute_url }}"><img class="card-img-top" src="{{ instance.get_image_url }}" alt="{{ instance.title}} logo"></a>
+				        		{% endif %}
+				        		<div class="card-body">
+								    <h4 class="card-title">{{ instance.title }}</h4>
+								    <p class="card-text">{{ instance.description|linebreaks|truncatewords:14 }}</p>
+								    <p class="card-text">₹{{ instance.price }}</p>
+				        		</div>
+				        		<div class='text-center'>
+				        			<a href="{{ instance.get_absolute_url }}" class="btn btn-primary my-2">View</a>
+				        			{% include 'products/snippets/update_cart.html' with product=instance cart=cart %}
+				    			</div>
+			    				</div>
+						</div>
+			    	{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+
+<div class= "row">
+				{% for product in products2 %}
+						<div class="card" style="width: 20rem;">
+							  {% if product.get_image_url %}
+							    <a href="{{ product.get_absolute_url }}"><img class="card-img-top" src="{{ product.get_image_url }}" alt="{{ product.title}} logo"></a>
+							    {% endif %}
+							  <div class="card-body">
+							    <h4 class="card-title">{{ product.title }}</h4>
+							    <p class="card-text">{{ product.description|linebreaks|truncatewords:14 }}</p>
+							    <p class="card-text">₹{{ product.price }}</p>
+							    
+							    <div class='text-center'>
+							        <a href="{{ product.get_absolute_url }}" class="btn btn-primary my-2">View</a>
+							        {% include 'products/snippets/update_cart.html' with product=product cart=cart %}
+							    </div>
+							  </div>
+						</div>
+			</div>{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<div class='row'>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="owl-carousel owl-theme">-->
+                {% for product in products2 %}
+                    <div class="item">
+                        <div class="card">
+                            {% if product.get_image_url %}
+                                <a href="{{ product.get_absolute_url }}"><img class="card-img-top" src="{{ product.get_image_url }}" alt="{{ product.title}} logo"></a>
+                            {% endif %}
+                            <div class="card-body">
+                                <h4 class="card-title">{{ product.title }}</h4>
+                                <p class="card-text">{{ product.description|linebreaks|truncatewords:14 }}</p>
+                                <p class="card-text">₹{{ product.price }}</p>
+                            </div>
+                            <div class='text-center'>
+                                <a href="{{ product.get_absolute_url }}" class="btn btn-primary my-2">View</a>
+                                {% include 'products/snippets/update_cart.html' with product=product cart=cart %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

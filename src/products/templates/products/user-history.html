@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+        <div class='row'>
+        	<div class='col-12'>
+        		<h1 class="font-weight-bold">Product View History</h1><hr/>
+        	</div>
+    <div class="row">
+        {% for obj in object_list %}
+            <div class='col my-3'>
+            {{ forloop.counter }}
+           		 {% include 'products/snippets/card.html' with instance=obj.content_object %}  
+            
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

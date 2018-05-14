@@ -1,0 +1,90 @@
+
+{% load staticfiles %}
+{% url 'home_page' as home_url %}
+	<style>
+	@import url('https://fonts.googleapis.com/css?family=Oswald');
+	p a {
+		font-family: 'Oswald', sans-serif;
+	}
+		a {
+			color :black;
+		}
+		 p a {
+			color: #7B6126;
+		}
+	.myfooter{
+		background: #fff;
+	}
+	.contact {
+		margin-right: 100px;
+		color: #7B6126;
+		font-family: 'Oswald', sans-serif;
+	}
+	.mbr-text{
+		color: #7B6126;
+		font-family: 'Oswald', sans-serif;
+	}
+	</style>
+  <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+	<section class="footer3 cid-qv5AKCViO2 mt-2" id="footer3-3h" data-rv-view="931"><hr/>
+
+    
+
+	    <div class="mbr-overlay"></div>
+
+	    <div class="myfooter container-fluid footer-class" style="background:#fff;">
+	        <div class="media-container-row content">
+	            <div class="col-md-2 col-sm-4">
+	                <div class="mb-3 img-logo ml-5">
+	                    <a href="{{home_url}}">
+	                         <img src="{% static 'images/final.png' %}" style="margin-left: -40px;margin-top: 20px;"></a>
+	                    </a>
+	                </div>
+	            </div>
+	            <div class="myfooter" class="col-md-3 col-sm-4 col-lg-3 col-sm-12" style="color: #7B6126;">
+	                
+	                <p class="text-center mt-5">
+	                    <a href="{% url 'about' %}">About us</a>
+	                    <br><a href="#" >Services</a>
+	                    <br><a href="#" >Selected Work</a>
+	                    <br><a href="#" >Get In Touch</a>
+	                    <br><a href="#" >Careers</a>
+	                </p>
+	            </div>
+	            <div  class="col-md-3 col-sm-4 mt-5 ml-5">
+	                
+	                <p class="text-center">
+	                    <a href="#" class="text-black">Facebook</a>
+	                    <br><a href="#" class="text-black">Instagram</a>
+	                </p>
+	            </div>
+	            <div class="contact col-md-3 col-sm-12">
+	                <p class=" mt-2">
+	                    Contact
+	                </p>
+	                <p class="mbr-text form-text mbr-fonts-style display-7">
+	                    Grading Unit : Shop no. 04, "C" Wing ,<br> Yashshri Soceity , Near Khandoba Mandir,<br> Katraj, Pune 411028.	
+	                </p>
+	            </div>
+	            <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d30278.95354567676!2d73.84517033494699!3d18.444247347010762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sGrading+Unit+%3A+Shop+no.+04%2C+%22C%22+Wing+%2C+Yashshri+Soceity+%2C+Near+Khandoba+Mandir%2C+Katraj%2C+Pune+411028!5e0!3m2!1smr!2sin!4v1526270572291" width="200" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>	
+	        </div>
+	        <div class="footer-lower">
+	            <div class="media-container-row">
+	                <div class="col-sm-12">
+	                    <hr>
+	                </div>
+	            </div>
+	            <div class="media-container-row">
+	                <div class="col-sm-6 copyright">
+	                    <p class="mbr-text mbr-fonts-style display-7">
+	                        © Copyright 2018 24MotionPictures - All Rights Reserved
+	                    </p>
+	                </div>
+	                	
+	            </div>
+	        </div>
+	    </div>
+	</section>
+
+
+    

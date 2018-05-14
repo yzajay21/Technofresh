@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block offers %}
+			<div class="container py-5">
+				<div class="row">
+				{% for photo in photos %}
+					<div class="item">
+						{% if photo.image %}
+						<img src='{{ photo.image.url }}' class="img-responsive"/>
+						
+						{% endif %}
+					</div>
+				{% endfor %}
+				</div>
+			</div>
+<script>
+	$(function(){
+	  	$('.bxslider').bxSlider({
+		    mode: 'fade',
+		    captions: true,
+		});
+	});
+</script>	
+{% endblock %}
+
+<div class="container">
+	    <div class="imgContainer p">
+	        {% for photo in offers %}
+				{% if photo.image %}
+					<img src='{{ photo.image.url }}' class="img-responsive"/>
+					
+				{% endif %}
+			{% endfor %}
+	    </div>
+	</div>	

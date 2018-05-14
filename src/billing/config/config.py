@@ -1,0 +1,2 @@
+SALT = 'Bo6ZChBPDS'
+KEY = 'cPRE9tvJ'

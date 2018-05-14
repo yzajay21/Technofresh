@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1> cash on delivery</h1>
+
+</div>
+
+
+<div class="container">
+<div class="row">
+        <form action="https://test.payu.in/_payment"  name="payuForm" method="post">    
+        {% csrf_token %}        
+        <input type="hidden" name="key" value="{{ key }}" />            
+        <input type="hidden" name="hash" value="{{ hash }}"/>            
+        <input type="hidden" name="txnid" value="{{ order_obj }}" />
+        <input type="hidden" name="amount" value="{{ amount }}" />
+        <input type="hidden" name="email" value="{{ email }}" />
+        <input type="hidden" name="firstname" value="{{ firstname }}" />
+        <input type="hidden" name="phone" value="{{ phone }}" />
+        <input type="hidden" name="productinfo" value="{{ productinfo }}"/>
+        <input type="hidden" name="surl" value="{{ surl }}"/>
+        <input type="hidden" name="furl" value="{{ furl }}" />
+        <input type="hidden" name="service_provider" value="{{ service_provider }}" />
+     
+        <div class="form-inline">
+            <div class="col-md-12 col-sm-12">
+                Amount : {{amount}}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12 col-sm-12">
+                Purpose : {% for product in object.cart.products.all %}{{product}}{% if not forloop.last %}, {% endif %}{% endfor %}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12 col-sm-12">
+                Name : {{Name}}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12 col-sm-12">
+                Email : {{User}}
+            </div>
+        </div>            
+        <div class="form-group">
+            <div class="col-md-12 col-sm-12">
+                Mobile : {{Mobile}}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12 col-sm-12">
+                Transaction ID : {{order_obj}}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12 col-sm-12" style="padding-bottom:20px;padding-top:20px;">
+                After clicking 'Pay Now' button, you will be redirected to PayUMoney Secure Gateway.
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-12 col-sm-12">
+                <input type="submit" class="btn btn-success btn-sm" value="Pay Now">
+            </div>
+        </div>
+    </form>
+    </div>
+</div>
+    </div>
+</div>
+{% endblock %}

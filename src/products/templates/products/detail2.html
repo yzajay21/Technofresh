@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+	<div class="container">
+		<div class="card mb-3">
+			{% if object.image.url %}
+				<img class="card-img-top" src='{{ object.get_image_url }}' class='img-fluid' />
+			{% endif %}
+			<div class="card-body">	
+				<h5 class="card-title">{{object.title}}</h5>
+				<p class="card-text">{{ object.description}}<p>
+				<h2>₹{{object.price}}</h2>
+			</div>
+		</div>
+	
+		<div class="col-12  col-md-6 text-center">
+			{% include 'products/snippets/update_cart.html' with product=object cart=cart %}
+		</div>
+	</div>
+{% endblock %}

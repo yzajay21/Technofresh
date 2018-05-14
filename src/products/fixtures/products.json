@@ -1,0 +1,212 @@
+[
+{
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+        "title": "Fresho Onion, 5 kg ( Multipack )",
+        "description": "Onion is a vegetable which is almost like a staple in Indian food. This is also known to be one of the essential ingredients of raw salads. They come in different colours like white, red or yellow and are quite in demand in cold salads and hot soups. You can dice, slice or cut it in rings and put it in burgers and sandwiches. Onions emit a sharp flavour and fragrance once they are fried; it is due to the sulphur compound in the vegetable.",
+        "slug": "fresho-onion-5-kg-multipack",
+        "price": "50.90",
+        "active": true,
+        "default": 1,
+        "featured": true,
+        "categories": []
+    }
+},
+{
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+        "title": "Fresho Tomato Hybrid/Tomato Sankarit, 1 kg",
+        "description": "Fresho ensures that you get the right blend of nutrition and cost with these hybrid tomatoes. They are not like the conventional tomatoes which are restricted to seasons but these are found all year round. They have a firm and juicy texture and can perish at room temperature for longer periods.\r\nClick here for delicious vegetable recipes -",
+        "slug": "Fresh-Vegetables",
+        "price": "100.46",
+        "active": true,
+        "default": 1,
+        "featured": true,
+        "categories": []
+    }
+},
+{
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+        "title": "Fresho Tomato Hybrid/Tomato Sankarit, 1 kg",
+        "description": "Fresho is our brand of fresh fruits and vegetables which are individually handpicked everyday by our experienced and technically competent buyers. Our buying, storing and packaging processes are tailored to ensure that only the fresh, nutrient dense, healthy and delicious produce reaches your doorstep. We guarantee the quality of all Fresho products. If you're not satisfied with the freshness of the items, you can hand them back to our Customer Experience Executive (CEE) for a full refund. Royal gala apples are bright red, thin skinned, white fleshed fruits with a mild sweet flavour and are native to New Zealand.\r\nProduct image shown is for representation purpose only, the actually product may vary based on season, produce & availability.",
+        "slug": "fresho-tomato-hybridtomato-sankarit-1-kg",
+        "price": "118.57",
+        "active": true,
+        "default": null,
+        "featured": false,
+        "categories": [
+            1
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+        "title": "Fresh Vegetables",
+        "description": "aaaaaaaaaaaaaaaaaaaa",
+        "slug": "fresh-vegetables",
+        "price": "35.98",
+        "active": true,
+        "default": null,
+        "featured": true,
+        "categories": [
+            1
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 5,
+    "fields": {
+        "title": "Lipton Ice Tea - Lemon",
+        "description": "Enjoy the refreshing taste of Liptons lemon-flavoured iced tea. Unwind with this delightful concoctation of lemon and tea. A perfect infusion, with a unique blend of real tea and just the right amount of sweetness for a delicious taste that refreshes your body and mind. Sip in a dash of lemon, packed with the natural goodness of tea which brings out the zesty lemon flavor to brighten up yoour mood.",
+        "slug": "lipton-ice-tea-lemon",
+        "price": "250.00",
+        "active": true,
+        "default": null,
+        "featured": true,
+        "categories": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.variation",
+    "pk": 2,
+    "fields": {
+        "product": 1,
+        "title": "Fresho Onion, 5 kg ( Multipack )",
+        "price": "50.00",
+        "sale_price": "30.00",
+        "active": true,
+        "inventory": 10
+    }
+},
+{
+    "model": "products.variation",
+    "pk": 3,
+    "fields": {
+        "product": 2,
+        "title": "Fresho Tomato Hybrid/Tomato Sankarit, 1 kg",
+        "price": "80.00",
+        "sale_price": "70.00",
+        "active": true,
+        "inventory": 5
+    }
+},
+{
+    "model": "products.variation",
+    "pk": 4,
+    "fields": {
+        "product": 3,
+        "title": "Default",
+        "price": "88.00",
+        "sale_price": "99.00",
+        "active": true,
+        "inventory": 50
+    }
+},
+{
+    "model": "products.variation",
+    "pk": 5,
+    "fields": {
+        "product": 4,
+        "title": "Default",
+        "price": "35.00",
+        "sale_price": null,
+        "active": true,
+        "inventory": null
+    }
+},
+{
+    "model": "products.variation",
+    "pk": 6,
+    "fields": {
+        "product": 5,
+        "title": "Default",
+        "price": "250.00",
+        "sale_price": null,
+        "active": true,
+        "inventory": null
+    }
+},
+{
+    "model": "products.variation",
+    "pk": 7,
+    "fields": {
+        "product": 5,
+        "title": "Lipton Ice Tea - Lemon",
+        "price": "250.00",
+        "sale_price": "200.00",
+        "active": true,
+        "inventory": 90
+    }
+},
+{
+    "model": "products.productimage",
+    "pk": 1,
+    "fields": {
+        "product": 1,
+        "image": "products/fresho-onion-5-kg-multipack/fresho-onion-5-kg-multipack-None.jpeg"
+    }
+},
+{
+    "model": "products.productimage",
+    "pk": 2,
+    "fields": {
+        "product": 2,
+        "image": "products/fresho-tomato-hybridtomato-sankarit-1-kg/fresho-tomato-hybridtomato-sankarit-1-kg-None.jpeg"
+    }
+},
+{
+    "model": "products.productimage",
+    "pk": 3,
+    "fields": {
+        "product": 3,
+        "image": "products/fresho-tomato-hybridtomato-sankarit-1-kg/fresho-tomato-hybridtomato-sankarit-1_LdPzuKy.jpeg"
+    }
+},
+{
+    "model": "products.productimage",
+    "pk": 4,
+    "fields": {
+        "product": 4,
+        "image": "products/fresh-vegetables/fresh-vegetables-None.jpg"
+    }
+},
+{
+    "model": "products.productimage",
+    "pk": 5,
+    "fields": {
+        "product": 5,
+        "image": "products/lipton-ice-tea-lemon/lipton-ice-tea-lemon-None.jpg"
+    }
+},
+{
+    "model": "products.category",
+    "pk": 1,
+    "fields": {
+        "title": "Fresh Vegetables",
+        "slug": "Fresh-Vegetables",
+        "description": "",
+        "active": true,
+        "timestamp": "2018-03-06T12:46:49.528Z"
+    }
+},
+{
+    "model": "products.category",
+    "pk": 2,
+    "fields": {
+        "title": "Beverages",
+        "slug": "Beverages",
+        "description": "",
+        "active": true,
+        "timestamp": "2018-03-06T14:18:15.311Z"
+    }
+}
+]

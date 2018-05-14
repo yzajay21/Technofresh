@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>{% block title %}Technofresh{% endblock %}</title>
+    {% include 'base/css1.html' %}
+
+    
+</head>
+<body>
+    {% include "navbar22.html" %}
+    <div class="container-fluid">
+        {% block jumbotron %}{% endblock %}
+    </div>
+    <div class="container-fluid">
+        {% block categories %} {% endblock %}
+    </div>
+    <div class="container-fluid">
+       
+       {% block content %} {% endblock %}
+       {% block container %} {% endblock %}
+    </div>
+    <div class="container-fluid mt-auto mr-25px">
+        <div class="row">
+            <div class="col-12 col-md-5">
+            {% block containera %} {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    {% include 'base/my_js.html' %}
+    {% include 'footer.html' %}
+    {% block javascript %}{% endblock %}
+</body>
+</html>

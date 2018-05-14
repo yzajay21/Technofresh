@@ -1,0 +1,68 @@
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<style type="text/css" media="screen">
+	.left {
+    width: 178px;
+    float:left;
+	border-right: 0.1em solid black;
+	height: auto;
+	border-bottom: 0.1em solid black;
+}
+	.left h3 {
+		margin-right: 2px;
+		margin-top: ;: 2px;
+	}
+	.name a{
+		font-weight: bold;
+		font-family: 'Playfair Display', serif;
+		color:black;
+	}
+	a:hover {
+    	color:#00ADEF;
+	}
+
+	.left { background: white; }
+
+</style>
+<div class="container ml-1 mt-3">
+	<div class="left">
+
+		<h3 class="font-weight-bold" style="font-family:'Playfair Display', serif;">{{ object.title }}</h3><hr/>
+	   {% for object in products %}{{ object.count }}
+	   <ul>
+	   		<li><p class="name"><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></p></li>
+	   	</ul>
+	   	{% endfor %}
+	</div>
+</div>
+
+	<div class='container'>
+		<h3 class="text-center ml-1 font-weight-bold" style="font-family:'Playfair Display', serif;" >{{ object.title }}</h3><hr/>	
+		<div class="row ml-9">
+			{% for object in products %}
+			<div class="col-md-3 col-xs-6 col-sm-4"><hr/>
+				<div class="card-deck">
+					<div class="card cardColor">
+						<div class="card-body">
+							{% if object.get_image_url %}
+								<a href="{{ object.get_absolute_url }}"><img class="img-fluid" src="{{ object.get_image_url }}" alt="{{ product.title}}"></a><hr/>
+							{% endif %}
+							<h3 class="card-title mt-2">{{ object.title }}</h3><hr/>
+							<p class="card-text1 descriptionColor">{{ object.description|truncatewords:14 }}</p>
+							<p class="card-text">₹{{ object.price }}</p>
+								
+							<div class='text-center'>
+								<a href="{{ object.get_absolute_url }}" class="btn btn-primary my-2 float-	center">View</a>
+								{% include 'products/snippets/update_cart.html' with product=object cart=cart %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}

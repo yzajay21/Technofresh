@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+<section class="carousel slider" data-ride="carousel" id="postsCarousel">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-right mb-4">
+				<a class="btn btn-outline-secondary prev" href="" title="Goback"><i class="fas fa-chevron-left"></i></a>
+				<a class="btn btn-outline-secondary prev" href="" title="More"><i class="fas fa-chevron-right"></i></a>
+			</div>
+		</div>
+	</div>
+	{% for instance in object_list %}
+		<div class="container pt-0 mt-2 carousel-inner">
+			<div class="row row-equal carousel-item-active mt-0">
+				<div class="col-md-4">
+					<div class="card-deck">
+						<div class="card">
+							<div class="card-img-top card-img-top-250">
+								{% if instance.get_image_url %}
+		          					<a href="{{ instance.get_absolute_url }}"><img class="img-fluid" src="{{ instance.get_image_url }}" alt="{{ instance.title}} logo"></a>
+		        				{% endif %}
+							</div>
+							<div class="card-block pt-2">
+								<div class="card-header"><h3>{{ instance.title }}</h3></div>
+								<div class="card-text">{{ instance.description|linebreaks|truncatewords:14 }}</div>
+								<p class="card-text">₹{{ instance.price }}</p>
+							</div>
+							<div class='text-center'>
+		              			<a href="{{ instance.get_absolute_url }}" class="btn btn-primary my-2">View</a>
+		              				{% include 'products/snippets/update_cart.html' with product=instance cart=cart %}
+		          			</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+</section>
+
+
