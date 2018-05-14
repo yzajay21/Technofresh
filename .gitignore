@@ -3,7 +3,7 @@
 __pycache__/
 *.py[cod]
 *.class
-
+/src/technofresh/aws/conf.py
 paytm/
 # Virtualenv related
 bin/
